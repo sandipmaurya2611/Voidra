@@ -32,12 +32,17 @@ export default function Navbar() {
             >
               Products
             </Link>
-            <Link
-              href="/about-us"
-              className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
-            >
-              About Us
-            </Link>
+            <div className="relative group">
+              <button className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium">
+                About Us
+              </button>
+              <div className="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 rounded-lg min-w-[150px]">
+                <Link href="/about-us?section=story" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Our Story</Link>
+                <Link href="/about-us?section=philosophy" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Philosophy</Link>
+                <Link href="/about-us?section=values" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Values</Link>
+                <Link href="/about-us?section=team" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Team</Link>
+              </div>
+            </div>
             <Link
               href="/contact"
               className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
