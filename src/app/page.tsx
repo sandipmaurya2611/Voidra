@@ -126,9 +126,11 @@ export default function VoidraHomepage() {
                 <p className="text-lg sm:text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed mb-8 animate-fade-in-up animation-delay-200">
                   {slide.subtitle}
                 </p>
-                <button className="mt-4 px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase animate-fade-in-up animation-delay-400">
-                  Explore Collection
-                </button>
+                <Link href="/products">
+                  <button className="mt-4 px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase animate-fade-in-up animation-delay-400">
+                    Explore Collection
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -288,7 +290,7 @@ export default function VoidraHomepage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/collections">
+            <Link href="/products">
               <button className="px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium tracking-wide uppercase">
                 View All Products
               </button>
@@ -309,7 +311,7 @@ export default function VoidraHomepage() {
           <p className="mb-8 text-lg text-gray-300">
             Discover stories of empowerment, style philosophy, and the art of intentional living.
           </p>
-          <Link href="/whispers">
+          <Link href="/about-us">
             <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase">
               Read More
             </button>

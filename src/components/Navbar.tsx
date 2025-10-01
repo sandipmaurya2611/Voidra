@@ -22,7 +22,7 @@ export default function Navbar() {
               <div className="w-4 h-4 rounded-full bg-[#464646] -ml-2 z-10"></div>
               <div className="w-4 h-4 rounded-full bg-[#cbd1c4] -ml-2"></div>
             </div>
-            <span className="font-bold text-xl tracking-wide text-[#464646]">
+            <span className="font-bold text-xl tracking-wide text-[#ffffff]">
               VOIDRA
             </span>
           </div>
