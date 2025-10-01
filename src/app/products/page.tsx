@@ -2,6 +2,7 @@
 // src/app/collections/page.tsx
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -11,8 +12,6 @@ interface ProductCategory {
   name: string
   description: string
   image: string
-  productCount: number
-  priceRange: string
   gender: 'ladies' | 'gents'
 }
 
@@ -42,54 +41,42 @@ export default function ProductsPage() {
       id: 'ladies-shoes',
       name: 'The Poise Stiletto | Sculpted Leather Elegance',
       description: 'Elegant footwear for the modern woman',
-      image: '/product/shoes1.jpg',
-      productCount: 24,
-      priceRange: '₹8,000 - ₹25,000',
+      image: '/less shoes.jpg',
       gender: 'ladies'
     },
     {
       id: 'ladies-handbags',
       name: 'European Stiletto Ankle Boots for Bold Women',
       description: 'Luxury handbags and accessories',
-      image: '/images/ladies-handbags.jpg',
-      productCount: 32,
-      priceRange: '₹12,000 - ₹75,000',
+      image: '/Ankle Boots.jpg',
       gender: 'ladies'
     },
     {
       id: 'ladies-shirts',
       name: 'VOIDRA Denim Over-The-Knee Boots | Western',
       description: 'Contemporary blouses and statement tops',
-      image: '/images/ladies-shirts.jpg',
-      productCount: 18,
-      priceRange: '₹4,500 - ₹15,000',
+      image: '/Knee Boot.jpg',
       gender: 'ladies'
     },
     {
       id: 'ladies-pants',
       name: 'VOIDRA StreetMuse™ – Retro Stitch Accent Shoulder Bag',
       description: 'Tailored bottoms for professional elegance',
-      image: '/images/ladies-pants.jpg',
-      productCount: 16,
-      priceRange: '₹6,000 - ₹20,000',
+      image: '/Bags.jpg',
       gender: 'ladies'
     },
     {
       id: 'ladies-sandals',
       name: 'Starlight Metallic Tote Messenger Bag | VOIDRA',
       description: 'Chic sandals for every occasion',
-      image: '/images/ladies-sandals.jpg',
-      productCount: 20,
-      priceRange: '₹5,500 - ₹18,000',
+      image: '/SoftWeave.jpg',
       gender: 'ladies'
     },
     {
       id: 'ladies-accessories',
       name: 'VOIDRA UrbanCroc Tote – Women Crocodile Pattern Shoulder Bag',
       description: 'Jewelry, scarves, and finishing touches',
-      image: '/images/ladies-accessories.jpg',
-      productCount: 28,
-      priceRange: '₹2,500 - ₹35,000',
+      image: '/Hand bag.jpg',
       gender: 'ladies'
     },
 
@@ -98,36 +85,28 @@ export default function ProductsPage() {
       id: 'gents-shoes',
       name: 'Shoes',
       description: 'Premium footwear for the distinguished gentleman',
-      image: '/images/gents-shoes.jpg',
-      productCount: 22,
-      priceRange: '₹10,000 - ₹35,000',
+      image: '/boy1.jpg',
       gender: 'gents'
     },
     {
       id: 'gents-shirts',
       name: 'Shirts',
       description: 'Sophisticated shirts for modern men',
-      image: '/images/gents-shirts.jpg',
-      productCount: 26,
-      priceRange: '₹5,500 - ₹18,000',
+      image: '/product/bg1.jpg',
       gender: 'gents'
     },
     {
       id: 'gents-pants',
       name: 'Pants & Trousers',
       description: 'Tailored trousers and casual pants',
-      image: '/images/gents-pants.jpg',
-      productCount: 20,
-      priceRange: '₹7,000 - ₹25,000',
+      image: '/product/bg2.jpg',
       gender: 'gents'
     },
     {
       id: 'gents-wallets',
       name: 'Wallets',
       description: 'Luxury leather wallets and accessories',
-      image: '/images/gents-wallets.jpg',
-      productCount: 15,
-      priceRange: '₹3,500 - ₹12,000',
+      image: '/product/shoes1.jpg',
       gender: 'gents'
     }
   ]
@@ -208,7 +187,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#cbd1c4] to-white">
       <Head>
         <title>VOIDRA Collections – Premium Fashion for Ladies & Gents</title>
         <meta name="description" content="Discover VOIDRA's curated collection of luxury fashion for ladies and gentlemen. Bold elegance meets intentional design." />
@@ -284,24 +263,15 @@ export default function ProductsPage() {
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   
                   {/* Category Image */}
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden relative">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 flex items-center justify-center">
-                      <div className="text-center">
-                        {/* <div className="text-4xl mb-2">
-                          {category.id.includes('shoes') && '👞'}
-                          {category.id.includes('handbags') && '👜'}
-                          {category.id.includes('shirts') && '👔'}
-                          {category.id.includes('pants') && '👖'}
-                          {category.id.includes('sandals') && '👡'}
-                          {category.id.includes('accessories') && '💎'}
-                          {category.id.includes('wallets') && '👛'}
-                        </div> */}
-                        <span className="text-gray-500 text-sm font-medium">{category.name}</span>
-                      </div>
-                    </div>
-                    
-                    {/* Hover Overlay */}
-                   
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={false}
+                    />
                   </div>
 
                   {/* Category Info */}
@@ -313,15 +283,7 @@ export default function ProductsPage() {
                       {category.description}
                     </p>
                     
-                    {/* Stats */}
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-xs text-gray-500">
-                        {category.productCount} Products
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {category.priceRange}
-                      </span>
-                    </div>
+                    {/* Stats removed as requested */}
 
                     {/* Action Button */}
                     {/* <button className="w-full px-4 py-2 border border-gray-300 text-gray-700 hover:border-black hover:text-black transition-all duration-300 font-medium text-sm group-hover:bg-black group-hover:text-white">
@@ -333,27 +295,7 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          {/* Collection Stats */}
-          <div className="mt-16 text-center">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div>
-                <h4 className="text-2xl font-light text-gray-900 mb-2">
-                  {filteredCategories.reduce((sum, cat) => sum + cat.productCount, 0)}+
-                </h4>
-                <p className="text-gray-600 text-sm">Products Available</p>
-              </div>
-              <div>
-                <h4 className="text-2xl font-light text-gray-900 mb-2">
-                  {filteredCategories.length}
-                </h4>
-                <p className="text-gray-600 text-sm">Categories</p>
-              </div>
-              <div>
-                <h4 className="text-2xl font-light text-gray-900 mb-2">Premium</h4>
-                <p className="text-gray-600 text-sm">Quality Assured</p>
-              </div>
-            </div>
-          </div>
+          {/* Collection Stats removed as requested */}
         </div>
       </section>
 
