@@ -229,7 +229,7 @@ export default function ProductsPage() {
           {/* Gender Toggle */}
           <div className="flex justify-center">
             <div className="inline-flex border border-gray-300 rounded-lg overflow-hidden">
-              <button
+              {/* <button
                 onClick={() => setSelectedGender('ladies')}
                 className={`px-8 py-3 font-medium transition-all duration-300 ${
                   selectedGender === 'ladies'
@@ -238,8 +238,8 @@ export default function ProductsPage() {
                 }`}
               >
                 Ladies Wear
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 onClick={() => setSelectedGender('gents')}
                 className={`px-8 py-3 font-medium transition-all duration-300 ${
                   selectedGender === 'gents'
@@ -248,7 +248,7 @@ export default function ProductsPage() {
                 }`}
               >
                 Gents Wear
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -328,9 +328,9 @@ export default function ProductsPage() {
                     </div>
 
                     {/* Action Button */}
-                    <button className="w-full px-4 py-2 border border-gray-300 text-gray-700 hover:border-black hover:text-black transition-all duration-300 font-medium text-sm group-hover:bg-black group-hover:text-white">
+                    {/* <button className="w-full px-4 py-2 border border-gray-300 text-gray-700 hover:border-black hover:text-black transition-all duration-300 font-medium text-sm group-hover:bg-black group-hover:text-white">
                       Explore Collection
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
