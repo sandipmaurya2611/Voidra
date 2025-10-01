@@ -3,9 +3,9 @@ import Link from "next/link"
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#cbd1c4]/95 backdrop-blur-md border-b border-[#464646]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
+      <div className="bg-transparent/80  rounded-full shadow-lg border border-white px-8 py-3">
+        <div className="flex justify-between items-center">
           {/* VOIDRA Logo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-1 mr-3">
@@ -22,34 +22,33 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-[#464646] hover:text-[#b6774d] transition-colors duration-300 font-medium"
+              className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
             >
               Home
             </Link>
             <Link
               href="/products"
-              className="text-[#464646] hover:text-[#b6774d] transition-colors duration-300 font-medium"
+              className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
             >
               Products
             </Link>
             <Link
               href="/about-us"
-              className="text-[#464646] hover:text-[#b6774d] transition-colors duration-300 font-medium"
+              className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
             >
               About Us
             </Link>
             <Link
               href="/contact"
-              className="text-[#464646] hover:text-[#b6774d] transition-colors duration-300 font-medium"
+              className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300 font-medium"
             >
               Contact
             </Link>
-            
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button className="text-[#464646] hover:text-[#b6774d] transition-colors duration-300">
+            <button className="text-[#ffffff] hover:text-[#b6774d] transition-colors duration-300">
               <svg
                 className="w-6 h-6"
                 fill="none"
