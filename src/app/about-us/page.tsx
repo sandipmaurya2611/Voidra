@@ -1,6 +1,7 @@
 "use client"
 // src/app/about-us/page.tsx
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import Navbar from '@/components/Navbar'
@@ -115,7 +116,7 @@ export default function AboutPage() {
 
       {/* Our Story Section */}
       {activeSection === 'story' && (
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
@@ -137,13 +138,18 @@ export default function AboutPage() {
                   In a world of excess, she chooses intention.&quot;
                 </blockquote>
               </div>
-              <div className="bg-gradient-to-br from-gray-200 to-gray-300 aspect-square rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 text-lg font-medium">Brand Story Image</span>
+              <div className="relative bg-gradient-to-br from-gray-200 to-gray-300 aspect-square rounded-lg">
+                <Image
+                  src="/VOIDRA_Legacy.jpg"
+                  alt="VOIDRA Legacy"
+                  fill
+                  className="object-cover rounded-lg"
+                />
               </div>
             </div>
 
             {/* Timeline */}
-            <div className="mb-16">
+            <div className="mb-16 p-8 bg-gradient-to-b from-[#ffffff] to-white rounded-lg">
               <h3 className="text-2xl font-light mb-12 text-center tracking-wide text-gray-900">
                 OUR JOURNEY
               </h3>
@@ -332,7 +338,7 @@ export default function AboutPage() {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-black text-white">
+      <section className="py-16 px-4 text-white" style={{ backgroundColor: '#5a2917' }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-light mb-6 tracking-wide">
             EXPERIENCE VOIDRA
