@@ -109,11 +109,10 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false)
-      setSubmitSuccess(true)
       setFormData({
         name: '',
         email: '',
@@ -124,34 +123,38 @@ export default function ContactPage() {
       })
     }, 2000)
   }
-
+  
   return (
     <div className="min-h-screen bg-white">
       <Head>
         <title>Contact VOIDRA – Get in Touch | Premium Fashion Support</title>
         <meta name="description" content="Contact VOIDRA for inquiries, support, or partnerships. Multiple ways to connect with our premium fashion team." />
       </Head>
-
       <Navbar />
-
+      
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-gray-900">
+      <section className="pt-70 pb-75 px-4 relative">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/Model with bags.jpg')" }}
+        ></div>
+        <div className="absolute inset-0  from-gray-50/80 to-gray-100/80"></div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide text-white">
             CONTACT VOIDRA
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We&apos;re here to help you elevate your style journey. 
+          <p className="text-xl sm:text-2xl text-white max-w-4xl mx-auto leading-relaxed">
+            We're here to help you elevate your style journey.
             Connect with us for support, inquiries, or partnerships.
           </p>
         </div>
       </section>
 
       {/* Contact Methods */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-[#cbd1c4]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-light mb-4 tracking-wide text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide text-gray-900">
               GET IN TOUCH
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -159,7 +162,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 ">
             {contactMethods.map((method, index) => (
               <div key={index} className="text-center group">
                 <a
@@ -183,17 +186,17 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
-            
+
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-light mb-6 tracking-wide text-gray-900">
+              <h2 className="text-3xl font-bold mb-6 tracking-wide text-gray-900">
                 SEND US A MESSAGE
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Have a question or want to collaborate? We&apos;d love to hear from you. 
+              <p className="text-black mb-8 leading-relaxed">
+                Have a question or want to collaborate? We&apos;d love to hear from you.
                 Send us a message and we&apos;ll respond as soon as possible.
               </p>
 
@@ -211,7 +214,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-black mb-2">
                       Full Name *
                     </label>
                     <input
@@ -221,12 +224,12 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
+                      className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                       Email Address *
                     </label>
                     <input
@@ -236,7 +239,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
+                      className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -244,7 +247,7 @@ export default function ContactPage() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-black mb-2">
                       Phone Number
                     </label>
                     <input
@@ -253,12 +256,12 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
+                      className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
                       placeholder="+91 98765 43210"
                     />
                   </div>
                   <div>
-                    <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="inquiryType" className="block text-sm font-medium text-black mb-2">
                       Inquiry Type
                     </label>
                     <select
@@ -266,7 +269,7 @@ export default function ContactPage() {
                       name="inquiryType"
                       value={formData.inquiryType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
+                      className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
                     >
                       {inquiryTypes.map((type) => (
                         <option key={type.value} value={type.value}>
@@ -278,7 +281,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-black mb-2">
                     Subject *
                   </label>
                   <input
@@ -288,13 +291,13 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
+                    className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm"
                     placeholder="Brief subject of your message"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-black mb-2">
                     Message *
                   </label>
                   <textarea
@@ -304,7 +307,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm resize-vertical"
+                    className="w-full px-4 py-3 border border-black focus:border-black focus:outline-none focus:ring-1 focus:ring-black transition-colors rounded-sm resize-vertical"
                     placeholder="Please share your message, questions, or how we can help you..."
                   />
                 </div>
@@ -331,10 +334,10 @@ export default function ContactPage() {
 
             {/* Map & Office Info */}
             <div>
-              <h2 className="text-3xl font-light mb-6 tracking-wide text-gray-900">
+              <h2 className="text-3xl font-bold mb-6 tracking-wide text-gray-900">
                 VISIT OUR STORES
               </h2>
-              
+
               {/* Map Placeholder */}
               <div className="bg-gradient-to-br from-gray-200 to-gray-300 h-64 rounded-lg mb-8 flex items-center justify-center">
                 <div className="text-center">
@@ -389,7 +392,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-gray-50 bg-gradient-to-b from-[#5a2917] to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-light mb-4 tracking-wide text-gray-900">
@@ -442,7 +445,7 @@ export default function ContactPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 px-4 bg-black text-white">
+      {/* <section className="py-16 px-4 bg-black text-white  bg-gradient-to-b from-[#5a2917] to-white">
         <div className="max-w-2xl mx-auto text-center">
           <h3 className="text-2xl sm:text-3xl font-light mb-4 tracking-wide">
             STAY CONNECTED
@@ -451,8 +454,8 @@ export default function ContactPage() {
             Subscribe to receive exclusive updates, new collection launches, and special offers.
           </p>
           <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
-            <input 
-              type="email" 
+            <input
+              type="email"
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 bg-white text-black focus:outline-none focus:ring-2 focus:ring-gray-400 rounded-sm"
             />
@@ -461,7 +464,7 @@ export default function ContactPage() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </div>
