@@ -156,7 +156,7 @@ export default function AboutPage() {
 
       {/* Philosophy Section */}
       {activeSection === 'philosophy' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#5a2917] to-white">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
@@ -275,7 +275,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       {activeSection === 'team' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#5a2917] to-white">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
@@ -289,7 +289,7 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-2 gap-12">
               {team.map((member, index) => (
-                <div key={index} className="bg-[#cbd1c4] p-8 rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
+                <div key={index} className="bg-[#ffffff] p-8 rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
                   <div className="w-32 h-32 mx-auto mb-6">
                     <Image
                       src={member.image}

@@ -40,16 +40,16 @@ export default function ProductsPage() {
     // Ladies Wear
     {
       id: 'ladies-shoes',
-      name: 'Shoes',
+      name: 'The Poise Stiletto | Sculpted Leather Elegance',
       description: 'Elegant footwear for the modern woman',
-      image: '/images/ladies-shoes.jpg',
+      image: '/product/shoes1.jpg',
       productCount: 24,
       priceRange: '₹8,000 - ₹25,000',
       gender: 'ladies'
     },
     {
       id: 'ladies-handbags',
-      name: 'Handbags',
+      name: 'European Stiletto Ankle Boots for Bold Women',
       description: 'Luxury handbags and accessories',
       image: '/images/ladies-handbags.jpg',
       productCount: 32,
@@ -58,7 +58,7 @@ export default function ProductsPage() {
     },
     {
       id: 'ladies-shirts',
-      name: 'Shirts & Tops',
+      name: 'VOIDRA Denim Over-The-Knee Boots | Western',
       description: 'Contemporary blouses and statement tops',
       image: '/images/ladies-shirts.jpg',
       productCount: 18,
@@ -67,7 +67,7 @@ export default function ProductsPage() {
     },
     {
       id: 'ladies-pants',
-      name: 'Pants & Trousers',
+      name: 'VOIDRA StreetMuse™ – Retro Stitch Accent Shoulder Bag',
       description: 'Tailored bottoms for professional elegance',
       image: '/images/ladies-pants.jpg',
       productCount: 16,
@@ -76,7 +76,7 @@ export default function ProductsPage() {
     },
     {
       id: 'ladies-sandals',
-      name: 'Sandals',
+      name: 'Starlight Metallic Tote Messenger Bag | VOIDRA',
       description: 'Chic sandals for every occasion',
       image: '/images/ladies-sandals.jpg',
       productCount: 20,
@@ -85,7 +85,7 @@ export default function ProductsPage() {
     },
     {
       id: 'ladies-accessories',
-      name: 'Accessories',
+      name: 'VOIDRA UrbanCroc Tote – Women Crocodile Pattern Shoulder Bag',
       description: 'Jewelry, scarves, and finishing touches',
       image: '/images/ladies-accessories.jpg',
       productCount: 28,
@@ -217,12 +217,12 @@ export default function ProductsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-12 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-70 pb-75 px-4 text-white" style={{ backgroundImage: 'url(/boy.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-gray-900">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-white">
             VOIDRA COLLECTIONS
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl sm:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed mb-8">
             Curated pieces for those who don&apos;t follow trends — they create them.
           </p>
           
@@ -287,7 +287,7 @@ export default function ProductsPage() {
                   <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden relative">
                     <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="text-4xl mb-2">
+                        {/* <div className="text-4xl mb-2">
                           {category.id.includes('shoes') && '👞'}
                           {category.id.includes('handbags') && '👜'}
                           {category.id.includes('shirts') && '👔'}
@@ -295,17 +295,13 @@ export default function ProductsPage() {
                           {category.id.includes('sandals') && '👡'}
                           {category.id.includes('accessories') && '💎'}
                           {category.id.includes('wallets') && '👛'}
-                        </div>
+                        </div> */}
                         <span className="text-gray-500 text-sm font-medium">{category.name}</span>
                       </div>
                     </div>
                     
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="bg-white px-4 py-2 rounded-full shadow-lg">
-                        <span className="text-black font-medium text-sm">View Products</span>
-                      </div>
-                    </div>
+                   
                   </div>
 
                   {/* Category Info */}
@@ -361,157 +357,9 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Product Detail Modal */}
-      {showProductModal && selectedProduct && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            
-            {/* Modal Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-light text-gray-900">Product Details</h2>
-              <button
-                onClick={() => setShowProductModal(false)}
-                className="text-gray-500 hover:text-black transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
+      
 
-            {/* Modal Content */}
-            <div className="p-6">
-              <div className="grid md:grid-cols-2 gap-8">
-                
-                {/* Product Images */}
-                <div>
-                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-500 text-lg font-medium">Product Image</span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {selectedProduct.images.slice(1).map((_, index) => (
-                      <div key={index} className="aspect-square bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">Image {index + 2}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Product Info */}
-                <div>
-                  <h3 className="text-2xl font-light mb-4 text-gray-900">{selectedProduct.name}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">{selectedProduct.description}</p>
-                  
-                  {/* Price */}
-                  <div className="flex items-center space-x-3 mb-6">
-                    <span className="text-2xl font-medium text-gray-900">
-                      {formatPrice(selectedProduct.price)}
-                    </span>
-                    {selectedProduct.originalPrice && (
-                      <span className="text-lg text-gray-500 line-through">
-                        {formatPrice(selectedProduct.originalPrice)}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Material */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2 text-gray-900">Material</h4>
-                    <p className="text-gray-600">{selectedProduct.material}</p>
-                  </div>
-
-                  {/* Colors */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-3 text-gray-900">Available Colors</h4>
-                    <div className="flex space-x-2">
-                      {selectedProduct.colors.map((color, index) => (
-                        <div
-                          key={index}
-                          className="w-8 h-8 rounded-full border-2 border-gray-300 cursor-pointer hover:border-black transition-colors"
-                          style={{
-                            backgroundColor: color === 'Black' ? '#000' : 
-                                           color === 'White' ? '#fff' :
-                                           color === 'Brown' ? '#8B4513' :
-                                           color === 'Tan' ? '#D2B48C' :
-                                           color === 'Navy' ? '#000080' :
-                                           color === 'Nude' ? '#F5DEB3' :
-                                           color === 'Burgundy' ? '#800020' :
-                                           color === 'Cognac' ? '#8B4513' :
-                                           color === 'Midnight Blue' ? '#191970' : '#ccc'
-                          }}
-                          title={color}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Sizes */}
-                  {selectedProduct.sizes.length > 1 && (
-                    <div className="mb-6">
-                      <h4 className="font-semibold mb-3 text-gray-900">Available Sizes</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProduct.sizes.map((size, index) => (
-                          <button
-                            key={index}
-                            className="px-3 py-1 border border-gray-300 text-gray-700 hover:border-black hover:text-black transition-colors text-sm"
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Features */}
-                  <div className="mb-8">
-                    <h4 className="font-semibold mb-3 text-gray-900">Features</h4>
-                    <ul className="space-y-1">
-                      {selectedProduct.features.map((feature, index) => (
-                        <li key={index} className="text-gray-600 flex items-start">
-                          <span className="text-green-500 mr-2">•</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button className="w-full px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors font-medium tracking-wide uppercase">
-                      Add to Cart
-                    </button>
-                    <button className="w-full px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-colors font-medium tracking-wide uppercase">
-                      Add to Wishlist
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Newsletter */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-2xl mx-auto text-center">
-          <h3 className="text-2xl sm:text-3xl font-light mb-4 tracking-wide text-gray-900">
-            STAY IN THE VOID
-          </h3>
-          <p className="text-gray-600 mb-8 text-lg">
-            Be the first to discover new collections and exclusive insights.
-          </p>
-          <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-2">
-            <input 
-              type="email" 
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 border border-gray-300 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors rounded-sm"
-            />
-            <button className="px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300 font-medium uppercase tracking-wide rounded-sm">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </section>
+    
 
       <Footer />
     </div>
