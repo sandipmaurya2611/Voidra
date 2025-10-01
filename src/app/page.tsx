@@ -3,26 +3,28 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export default function VoidraHomepage() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  
+
   const heroSlides = [
     {
       title: "CRAFTED FOR THE BOLD",
       subtitle: "A declaration of confidence — a quiet rebellion wrapped in elegance",
-      image: "/images/hero-1.jpg"
+      image: "/girl1.jpg",
     },
     {
-      title: "LUXURY IN SIMPLICITY", 
+      title: "LUXURY IN SIMPLICITY",
       subtitle: "Refined details and timeless aesthetics defining modern luxury",
-      image: "/images/hero-2.jpg"
+      image: "/girl2.jpg",
     },
     {
       title: "INTENTIONAL LIVING",
       subtitle: "Beyond fashion — a movement toward intentional living",
-      image: "/images/hero-3.jpg"
-    }
+      image: "/boy1.jpg",
+    },
   ]
 
   const featuredProducts = [
@@ -30,26 +32,26 @@ export default function VoidraHomepage() {
       name: "TerraTote™",
       subtitle: "Oversized Canvas Crossbody",
       price: "₹14,342",
-      image: "/images/terratote.jpg"
+      image: "/images/terratote.jpg",
     },
     {
-      name: "LunaLoop™", 
+      name: "LunaLoop™",
       subtitle: "Retro Crescent Shoulder",
       price: "₹15,412",
-      image: "/images/lunaloop.jpg"
+      image: "/images/lunaloop.jpg",
     },
     {
       name: "SleekBox™",
       subtitle: "Minimalist Chic Shoulder",
       price: "₹22,285",
-      image: "/images/sleekbox.jpg"
+      image: "/images/sleekbox.jpg",
     },
     {
       name: "GemBlaze™",
-      subtitle: "Crystal Clutch Collection", 
+      subtitle: "Crystal Clutch Collection",
       price: "₹69,205",
-      image: "/images/gemblaze.jpg"
-    }
+      image: "/images/gemblaze.jpg",
+    },
   ]
 
   useEffect(() => {
@@ -66,54 +68,9 @@ export default function VoidraHomepage() {
         <meta name="description" content="Premium fashion brand rooted in emotional storytelling and bold elegance." />
       </Head>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* VOIDRA Logo */}
-            <div className="flex items-center">
-              <div className="flex items-center space-x-1 mr-3">
-                <div className="w-4 h-4 rounded-full bg-amber-200 opacity-80"></div>
-                <div className="w-4 h-4 rounded-full bg-gray-700 -ml-2 z-10"></div>
-                <div className="w-4 h-4 rounded-full bg-green-200 opacity-70 -ml-2"></div>
-              </div>
-              <span className="font-bold text-xl tracking-wide text-black">VOIDRA</span>
-            </div>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/collections" className="text-gray-700 hover:text-black transition-colors duration-300 font-medium">
-                Collections
-              </Link>
-              <Link href="/femme" className="text-gray-700 hover:text-black transition-colors duration-300 font-medium">
-                VOIDRA FEMME
-              </Link>
-              <Link href="/about" className="text-gray-700 hover:text-black transition-colors duration-300 font-medium">
-                About
-              </Link>
-              <Link href="/whispers" className="text-gray-700 hover:text-black transition-colors duration-300 font-medium">
-                Whispers
-              </Link>
-              <Link href="/cart" className="text-gray-700 hover:text-black transition-colors duration-300">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9.5M7 13L5.5 7M7 13h10" />
-                </svg>
-              </Link>
-            </div>
+        <Navbar />
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button className="text-gray-700 hover:text-black transition-colors duration-300">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section with Slider */}
+        {/* Hero Section with Slider */}
       <section className="relative h-screen overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
@@ -124,11 +81,11 @@ export default function VoidraHomepage() {
           >
             {/* Hero Background with Overlay */}
             <div className="absolute inset-0 bg-black/40 z-10"></div>
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-gray-300"
-              style={{ backgroundImage: `linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)` }}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
             ></div>
-            
+
             {/* Hero Content */}
             <div className="relative z-20 flex items-center justify-center h-full text-center text-white px-4">
               <div className="max-w-5xl mx-auto">
@@ -296,62 +253,7 @@ export default function VoidraHomepage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <div className="flex items-center space-x-1 mr-3">
-                  <div className="w-3 h-3 rounded-full bg-amber-200 opacity-80"></div>
-                  <div className="w-3 h-3 rounded-full bg-gray-400 -ml-1"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-200 opacity-70 -ml-1"></div>
-                </div>
-                <span className="font-bold text-lg tracking-wide">VOIDRA</span>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Elevating modern fashion with iconic adaptable design.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Collections</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/femme" className="hover:text-white transition-colors">VOIDRA FEMME</Link></li>
-                <li><Link href="/bags" className="hover:text-white transition-colors">Handbags</Link></li>
-                <li><Link href="/accessories" className="hover:text-white transition-colors">Accessories</Link></li>
-                <li><Link href="/new" className="hover:text-white transition-colors">New Arrivals</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Company</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/about" className="hover:text-white transition-colors">About VOIDRA</Link></li>
-                <li><Link href="/whispers" className="hover:text-white transition-colors">Whispers Blog</Link></li>
-                <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Support</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/faq" className="hover:text-white transition-colors">FAQs</Link></li>
-                <li><Link href="/shipping" className="hover:text-white transition-colors">Shipping & Returns</Link></li>
-                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} VOIDRA. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
