@@ -2,7 +2,7 @@
 // src/app/contact/page.tsx
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -62,6 +62,9 @@ export default function ContactPage() {
     }
   ]
 
+  // Map state and ref for scrolling to map on selection
+  const mapRef = useRef<HTMLDivElement | null>(null)
+
   const inquiryTypes = [
     { value: 'general', label: 'General Inquiry' },
     { value: 'orders', label: 'Order Support' },
@@ -80,23 +83,33 @@ export default function ContactPage() {
       email: 'mumbai@voidra.in',
       hours: 'Mon-Sun: 11 AM - 9 PM'
     },
+    // {
+    //   city: 'Delhi',
+    //   type: 'Retail Store',
+    //   address: 'Khan Market, New Delhi 110003',
+    //   phone: '+91 98765 43211',
+    //   email: 'delhi@voidra.in',
+    //   hours: 'Mon-Sun: 11 AM - 8 PM'
+    // },
+    // {
+    //   city: 'Bangalore',
+    //   type: 'Retail Store',
+    //   address: 'UB City Mall, Vittal Mallya Road, Bangalore 560001',
+    //   phone: '+91 98765 43212',
+    //   email: 'bangalore@voidra.in',
+    //   hours: 'Mon-Sun: 10 AM - 10 PM'
+    // },
     {
-      city: 'Delhi',
+      city: 'Pune',
       type: 'Retail Store',
-      address: 'Khan Market, New Delhi 110003',
-      phone: '+91 98765 43211',
-      email: 'delhi@voidra.in',
-      hours: 'Mon-Sun: 11 AM - 8 PM'
-    },
-    {
-      city: 'Bangalore',
-      type: 'Retail Store',
-      address: 'UB City Mall, Vittal Mallya Road, Bangalore 560001',
-      phone: '+91 98765 43212',
-      email: 'bangalore@voidra.in',
-      hours: 'Mon-Sun: 10 AM - 10 PM'
+      address: 'V18, Balewadi High Street, Baner, Pune, Maharashtra',
+      phone: '+91 98765 43213',
+      email: 'pune@voidra.in',
+      hours: 'Mon-Sun: 11 AM - 9 PM'
     }
   ]
+
+  const [selectedOffice, setSelectedOffice] = useState(offices[0])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -338,11 +351,17 @@ export default function ContactPage() {
                 VISIT OUR STORES
               </h2>
 
-              {/* Map Placeholder */}
-              <div className="bg-gradient-to-br from-gray-200 to-gray-300 h-64 rounded-lg mb-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">🗺️</div>
-                  <span className="text-gray-600 font-medium">Interactive Store Map</span>
+              {/* Interactive Map (selected office) */}
+              <div ref={mapRef} className="mb-8">
+                <iframe
+                  title={`Map of ${selectedOffice.city}`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(selectedOffice.address)}&output=embed`}
+                  className="w-full h-64 rounded-lg border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="mt-2 text-sm text-gray-600">
+                  Showing: <span className="font-medium text-gray-800">{selectedOffice.city}</span>
                 </div>
               </div>
 
@@ -382,6 +401,19 @@ export default function ContactPage() {
                         </svg>
                         {office.hours}
                       </p>
+                      <div className="pt-2">
+                        <button
+                          onClick={() => {
+                            setSelectedOffice(office)
+                            mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                          }}
+                          className="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 hover:border-black hover:text-black transition-colors text-xs uppercase tracking-wide"
+                          aria-label={`View ${office.city} on map`}
+                        >
+                          <span className="mr-2">📍</span>
+                          View on map
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -395,10 +427,10 @@ export default function ContactPage() {
       <section className="py-16 px-4 bg-gray-50 bg-gradient-to-b from-[#5a2917] to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-light mb-4 tracking-wide text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide text-gray-900">
               FREQUENTLY ASKED QUESTIONS
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-black-600">
               Quick answers to common inquiries
             </p>
           </div>
@@ -433,14 +465,14 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <p className="text-gray-600 mb-4">Still have questions?</p>
             <Link href="/faq">
               <button className="px-6 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium tracking-wide uppercase">
                 View All FAQs
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 
