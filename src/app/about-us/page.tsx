@@ -3,7 +3,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -13,10 +13,28 @@ export default function AboutPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
+  // Refs for scrolling
+  const storyRef = useRef<HTMLDivElement>(null)
+  const philosophyRef = useRef<HTMLDivElement>(null)
+  const valuesRef = useRef<HTMLDivElement>(null)
+  const teamRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const section = searchParams.get('section') || 'story'
     setActiveSection(section)
   }, [searchParams])
+
+  useEffect(() => {
+    if (activeSection === 'story' && storyRef.current) {
+      storyRef.current.scrollIntoView({ behavior: 'smooth' })
+    } else if (activeSection === 'philosophy' && philosophyRef.current) {
+      philosophyRef.current.scrollIntoView({ behavior: 'smooth' })
+    } else if (activeSection === 'values' && valuesRef.current) {
+      valuesRef.current.scrollIntoView({ behavior: 'smooth' })
+    } else if (activeSection === 'team' && teamRef.current) {
+      teamRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [activeSection])
 
   const milestones = [
     {
@@ -98,7 +116,7 @@ export default function AboutPage() {
 
       {/* Our Story Section */}
       {activeSection === 'story' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
+        <section ref={storyRef} className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
@@ -156,7 +174,7 @@ export default function AboutPage() {
 
       {/* Philosophy Section */}
       {activeSection === 'philosophy' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
+        <section ref={philosophyRef} className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
@@ -169,12 +187,8 @@ export default function AboutPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-12 mb-16">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-amber-200 rounded-full flex items-center justify-center">
-                  <svg className="w-10 h-10 text-amber-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
+              <div className="text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">Crafted for the Bold</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Every piece we create is a declaration of confidence — a quiet rebellion wrapped in elegance. 
@@ -182,12 +196,8 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
-                  <svg className="w-10 h-10 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
+              <div className="text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">Luxury in Simplicity</h3>
                 <p className="text-gray-600 leading-relaxed">
                   True luxury lies not in complexity, but in the perfection of simplicity. 
@@ -195,12 +205,8 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-green-200 rounded-full flex items-center justify-center">
-                  <svg className="w-10 h-10 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
+              <div className="text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">Intentional Living</h3>
                 <p className="text-gray-600 leading-relaxed">
                   We&apos;re more than a fashion brand — we&apos;re a movement toward intentional living. 
@@ -223,13 +229,13 @@ export default function AboutPage() {
 
       {/* Values Section */}
       {activeSection === 'values' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
+        <section ref={valuesRef} className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-light mb-6 tracking-wide text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-gray-900">
                 OUR VALUES
               </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-black-600 max-w-4xl mx-auto leading-relaxed">
                 These principles guide every decision we make, every design we create, 
                 and every relationship we build.
               </p>
@@ -246,7 +252,7 @@ export default function AboutPage() {
             </div>
 
             {/* Sustainability Section */}
-            <div className="bg-black text-white p-12 rounded-lg text-center">
+            <div className="bg-[#5a2917] text-white p-12 rounded-lg text-center">
               <h3 className="text-2xl font-light mb-6 tracking-wide">
                 COMMITMENT TO SUSTAINABILITY
               </h3>
@@ -275,7 +281,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       {activeSection === 'team' && (
-        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
+        <section ref={teamRef} className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
