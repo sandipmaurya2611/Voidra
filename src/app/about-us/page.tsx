@@ -56,13 +56,13 @@ export default function AboutPage() {
       name: "Manish Kumar Saini",
       role: "Founder & Creative Director",
       description: "Visionary behind VOIDRA's premium fashion philosophy, rooted in emotional storytelling and bold elegance.",
-      image: "/images/team-manish.jpg"
+      image: "/team1.png"
     },
     {
       name: "Design Team",
       role: "Creative Collective",
       description: "A dedicated team of designers crafting future-forward pieces that embody luxury and intentional living.",
-      image: "/images/team-design.jpg"
+      image: "/team2.png"
     }
   ]
 
@@ -76,12 +76,12 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-20 pb-16 px-4 text-white" style={{ backgroundImage: 'url(/abouthero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-gray-900">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-white">
             ABOUT VOIDRA
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
             A future-forward fashion house redefining luxury through adaptable design, 
             bold silhouettes, and globally inspired aesthetics.
           </p>
@@ -89,7 +89,7 @@ export default function AboutPage() {
       </section>
 
       {/* Navigation Tabs */}
-      <section className="sticky top-16 bg-white border-b border-gray-200 z-40">
+      <section className={` top-16 border-b border-gray-200 z-40 ${activeSection === 'philosophy' || activeSection === 'team' ? 'bg-[#cbd1c4]' : 'bg-[#5a2917]'}`}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-center space-x-8 py-4 overflow-x-auto">
             {[
@@ -97,19 +97,23 @@ export default function AboutPage() {
               { id: 'philosophy', label: 'Philosophy' },
               { id: 'values', label: 'Values' },
               { id: 'team', label: 'Team' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveSection(tab.id)}
-                className={`px-4 py-2 font-medium transition-colors duration-300 whitespace-nowrap ${
-                  activeSection === tab.id
-                    ? 'text-black border-b-2 border-black'
-                    : 'text-gray-600 hover:text-black'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+            ].map((tab) => {
+              const tabTextColor = activeSection === 'philosophy' || activeSection === 'team' ? 'text-gray-900' : 'text-white';
+              const hoverTextColor = activeSection === 'philosophy' || activeSection === 'team' ? 'hover:text-gray-900' : 'hover:text-white';
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveSection(tab.id)}
+                  className={`px-4 py-2 font-medium transition-colors duration-300 whitespace-nowrap ${
+                    activeSection === tab.id
+                      ? `${tabTextColor} border-b-2 border-black`
+                      : `${tabTextColor} ${hoverTextColor}`
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -174,13 +178,13 @@ export default function AboutPage() {
 
       {/* Philosophy Section */}
       {activeSection === 'philosophy' && (
-        <section className="py-20 px-4 bg-gray-50">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#5a2917] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-light mb-6 tracking-wide text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
                 OUR PHILOSOPHY
               </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-black-600 max-w-4xl mx-auto leading-relaxed">
                 At VOIDRA, we believe in creating more than fashion — we create statements, 
                 movements, and moments of profound self-expression.
               </p>
@@ -228,12 +232,12 @@ export default function AboutPage() {
             </div>
 
             {/* Quote Section */}
-            <div className="text-center bg-white p-12 rounded-lg">
-              <blockquote className="text-2xl sm:text-3xl font-light italic text-gray-800 mb-6 leading-relaxed">
+            <div className="text-center p-12 rounded-lg" style={{ backgroundColor: '#cbd1c4' }}>
+              <blockquote className="text-2xl sm:text-3xl font-light italic text-gray-900 mb-6 leading-relaxed">
                 &quot;In a world of noise, she chooses clarity. In a world of excess, she chooses intention. 
                 This is the VOIDRA woman — bold, elegant, and unapologetically herself.&quot;
               </blockquote>
-              <cite className="text-gray-600">— VOIDRA Design Philosophy</cite>
+              <cite className="text-gray-700">— VOIDRA Design Philosophy</cite>
             </div>
           </div>
         </section>
@@ -241,7 +245,7 @@ export default function AboutPage() {
 
       {/* Values Section */}
       {activeSection === 'values' && (
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#cbd1c4] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-light mb-6 tracking-wide text-gray-900">
@@ -293,13 +297,13 @@ export default function AboutPage() {
 
       {/* Team Section */}
       {activeSection === 'team' && (
-        <section className="py-20 px-4 bg-gray-50">
+        <section className="py-20 px-4 bg-gradient-to-b from-[#5a2917] to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-light mb-6 tracking-wide text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-wide text-black-900">
                 THE TEAM
               </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl text-black-600 max-w-4xl mx-auto leading-relaxed">
                 Meet the visionaries behind VOIDRA&apos;s distinctive aesthetic and 
                 commitment to elevating modern fashion.
               </p>
@@ -307,9 +311,15 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-2 gap-12">
               {team.map((member, index) => (
-                <div key={index} className="bg-white p-8 rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
-                  <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-gray-500 text-sm">Photo</span>
+                <div key={index} className="bg-[#cbd1c4] p-8 rounded-lg text-center hover:shadow-lg transition-shadow duration-300">
+                  <div className="w-32 h-32 mx-auto mb-6">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={128}
+                      height={128}
+                      className="rounded-full object-cover"
+                    />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 text-gray-900">{member.name}</h3>
                   <p className="text-amber-600 font-medium mb-4">{member.role}</p>
@@ -320,10 +330,10 @@ export default function AboutPage() {
 
             {/* Join Us Section */}
             <div className="text-center mt-16">
-              <h3 className="text-2xl font-light mb-6 tracking-wide text-gray-900">
+              <h3 className="text-2xl font-bold mb-6 tracking-wide text-black-900">
                 JOIN OUR JOURNEY
               </h3>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="text-lg text-black-600 max-w-2xl mx-auto leading-relaxed mb-8">
                 We&apos;re always seeking passionate individuals who share our vision 
                 for intentional design and bold elegance.
               </p>
