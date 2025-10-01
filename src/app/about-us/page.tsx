@@ -3,12 +3,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState('story')
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  useEffect(() => {
+    const section = searchParams.get('section') || 'story'
+    setActiveSection(section)
+  }, [searchParams])
 
   const milestones = [
     {
@@ -30,22 +38,22 @@ export default function AboutPage() {
 
   const values = [
     {
-      icon: "⚡",
+      
       title: "Bold Confidence",
       description: "We create pieces for women who set trends rather than follow them — each design is a declaration of confidence."
     },
     {
-      icon: "✨",
+      
       title: "Timeless Elegance", 
       description: "Our commitment to refined details and timeless aesthetics defines our interpretation of modern luxury."
     },
     {
-      icon: "🌱",
+      
       title: "Intentional Design",
       description: "Beyond fashion, we're a movement toward intentional living that brings clarity to clutter and softness to strength."
     },
     {
-      icon: "🌍",
+      
       title: "Global Inspiration",
       description: "Drawing from globally inspired aesthetics to create adaptable designs that transcend cultural boundaries."
     }
@@ -76,7 +84,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 text-white" style={{ backgroundImage: 'url(/abouthero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="pt-70 pb-75 px-4 text-white" style={{ backgroundImage: 'url(/abouthero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 tracking-wide text-white">
             ABOUT VOIDRA
@@ -85,36 +93,6 @@ export default function AboutPage() {
             A future-forward fashion house redefining luxury through adaptable design, 
             bold silhouettes, and globally inspired aesthetics.
           </p>
-        </div>
-      </section>
-
-      {/* Navigation Tabs */}
-      <section className={` top-16 border-b border-gray-200 z-40 ${activeSection === 'philosophy' || activeSection === 'team' ? 'bg-[#cbd1c4]' : 'bg-[#5a2917]'}`}>
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-center space-x-8 py-4 overflow-x-auto">
-            {[
-              { id: 'story', label: 'Our Story' },
-              { id: 'philosophy', label: 'Philosophy' },
-              { id: 'values', label: 'Values' },
-              { id: 'team', label: 'Team' }
-            ].map((tab) => {
-              const tabTextColor = activeSection === 'philosophy' || activeSection === 'team' ? 'text-gray-900' : 'text-white';
-              const hoverTextColor = activeSection === 'philosophy' || activeSection === 'team' ? 'hover:text-gray-900' : 'hover:text-white';
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveSection(tab.id)}
-                  className={`px-4 py-2 font-medium transition-colors duration-300 whitespace-nowrap ${
-                    activeSection === tab.id
-                      ? `${tabTextColor} border-b-2 border-black`
-                      : `${tabTextColor} ${hoverTextColor}`
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
         </div>
       </section>
 
