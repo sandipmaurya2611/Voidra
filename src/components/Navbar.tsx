@@ -17,10 +17,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* VOIDRA Logo */}
           <div className="flex items-center">
-            <div className="flex items-center space-x-1 mr-3">
-              <div className="w-4 h-4 rounded-full bg-[#b6774d] opacity-90"></div>
-              <div className="w-4 h-4 rounded-full bg-[#464646] -ml-2 z-10"></div>
-              <div className="w-4 h-4 rounded-full bg-[#cbd1c4] -ml-2"></div>
+            {/* Overlapping circles joined at the right end */}
+            <div className="relative mr-3 h-4 w-10">
+              {/* Left circle */}
+              <div className="absolute right-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#b6774d] opacity-90"></div>
+              {/* Middle circle */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#464646] z-10"></div>
+              {/* Right circle (tip/end) */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#cbd1c4]"></div>
             </div>
             <span className="font-bold text-xl tracking-wide text-[#ffffff]">
               VOIDRA
