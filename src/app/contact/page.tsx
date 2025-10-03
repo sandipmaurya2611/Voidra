@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { MdEmail,MdCallEnd, } from "react-icons/md";
+import { ImWhatsapp } from "react-icons/im";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoMdCall } from "react-icons/io";
 
 interface ContactForm {
   name: string
@@ -29,7 +33,7 @@ export default function ContactPage() {
 
   const contactMethods = [
     {
-      icon: '📧',
+      icon: <MdEmail />,
       title: 'Email Us',
       description: 'Get in touch for any inquiries',
       contact: 'hello@voidra.in',
@@ -37,7 +41,7 @@ export default function ContactPage() {
       availability: '24/7 Response within 24 hours'
     },
     {
-      icon: '📞',
+      icon: <IoMdCall />,
       title: 'Call Us',
       description: 'Speak with our customer service',
       contact: '+91 98765 43210',
@@ -45,7 +49,8 @@ export default function ContactPage() {
       availability: 'Mon-Sat, 10 AM - 7 PM IST'
     },
     {
-      icon: '💬',
+      icon: <ImWhatsapp />
+,
       title: 'WhatsApp',
       description: 'Quick support via WhatsApp',
       contact: '+91 98765 43210',
@@ -53,7 +58,8 @@ export default function ContactPage() {
       availability: 'Mon-Sat, 10 AM - 7 PM IST'
     },
     {
-      icon: '📍',
+      icon: <FaLocationDot />
+,
       title: 'Visit Store',
       description: 'Experience VOIDRA in person',
       contact: 'Mumbai Flagship Store',
@@ -213,7 +219,8 @@ export default function ContactPage() {
                   rel={method.action.startsWith('http') ? 'noopener noreferrer' : ''}
                   className="block bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <div className="text-4xl mb-4">{method.icon}</div>
+                  <div className="text-4xl mb-4 flex items-center justify-center">{method.icon}</div> 
+
                   <h3 className="font-semibold text-lg mb-2 text-gray-900 group-hover:text-black">
                     {method.title}
                   </h3>
@@ -394,8 +401,15 @@ export default function ContactPage() {
                 </div>
               </div>
 
+             <h1 className="text-3xl sm:text-4xl font-bold mb-4 tracking-wide text-gray-900 text-center">
+                 OFFICE ADDRESS
+              </h1>
+
+
+        
+
               {/* Office Locations */}
-              <div className="space-y-6">
+              <div className="mt-9 grid grid-cols-1 md:grid-cols-2 gap-6 w-150 h-70">
                 {offices.map((office, index) => (
                   <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                     <div className="flex justify-between items-start mb-3">
