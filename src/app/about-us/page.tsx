@@ -341,12 +341,12 @@ export default function AboutPage() {
             Discover our collection of bold, elegant pieces designed for the modern woman.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/collections">
+            <Link href="/products">
               <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase">
                 Shop Collection
               </button>
             </Link>
-            <Link href="/whispers">
+            <Link href="/about-us">
               <button className="px-8 py-3 bg-transparent text-white hover:text-gray-300 transition-colors duration-300 font-medium tracking-wide uppercase">
                 Read Our Stories
               </button>
