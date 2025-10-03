@@ -9,14 +9,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Logo + Tagline */}
           <div>
-            <div className="flex items-center mb-4">
-              <div className="flex items-center space-x-1 mr-3">
-                <div className="w-3 h-3 rounded-full bg-[#b6774d] opacity-90"></div>
-                <div className="w-3 h-3 rounded-full bg-[#cbd1c4] -ml-1"></div>
-                <div className="w-3 h-3 rounded-full bg-white/40 -ml-1"></div>
-              </div>
-              <span className="font-bold text-lg tracking-wide">VOIDRA</span>
+          <div className="flex items-center">
+            {/* Overlapping circles joined at the right end */}
+            <div className="relative mr-3 h-4 w-10">
+              {/* Left circle */}
+              <div className="absolute right-6 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#b6774d] opacity-90"></div>
+              {/* Middle circle */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#464646] z-10"></div>
+              {/* Right circle (tip/end) */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#cbd1c4]"></div>
             </div>
+            <span className="font-bold text-xl tracking-wide text-[#ffffff]">
+              VOIDRA
+            </span>
+          </div>
+           
             <p className="text-gray-300 text-sm leading-relaxed">
               Elevating modern fashion with iconic adaptable design.
             </p>
@@ -24,12 +31,12 @@ export default function Footer() {
 
           {/* Collections */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Collections</h4>
+            <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link href="/femme" className="hover:text-[#b6774d] transition-colors">VOIDRA FEMME</Link></li>
-              <li><Link href="/bags" className="hover:text-[#b6774d] transition-colors">Handbags</Link></li>
-              <li><Link href="/accessories" className="hover:text-[#b6774d] transition-colors">Accessories</Link></li>
-              <li><Link href="/new" className="hover:text-[#b6774d] transition-colors">New Arrivals</Link></li>
+              <li><Link href="/" className="hover:text-[#b6774d] transition-colors">Home</Link></li>
+              <li><Link href="/products" className="hover:text-[#b6774d] transition-colors">Products</Link></li>
+              <li><Link href="/about-us" className="hover:text-[#b6774d] transition-colors">About us</Link></li>
+              <li><Link href="/contact" className="hover:text-[#b6774d] transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -37,10 +44,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-white">Company</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link href="/about-us" className="hover:text-[#b6774d] transition-colors">About VOIDRA</Link></li>
-              <li><Link href="/whispers" className="hover:text-[#b6774d] transition-colors">Whispers Blog</Link></li>
-              <li><Link href="/careers" className="hover:text-[#b6774d] transition-colors">Careers</Link></li>
-              <li><Link href="/contact" className="hover:text-[#b6774d] transition-colors">Contact</Link></li>
+              <li><Link href="/about-us?section=story" className="hover:text-[#b6774d] transition-colors">Our Story</Link></li>
+              <li><Link href="/about-us?section=philosophy" className="hover:text-[#b6774d] transition-colors">Philosophy</Link></li>
+              <li><Link href="/about-us?section=values" className="hover:text-[#b6774d] transition-colors">Values</Link></li>
+              <li><Link href="/about-us?section=team" className="hover:text-[#b6774d] transition-colors">Team</Link></li>
             </ul>
           </div>
 
