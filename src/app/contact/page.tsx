@@ -83,7 +83,7 @@ export default function ContactPage() {
   const offices = [
     {
       city: 'Mumbai',
-      type: 'Flagship Store & Headquarters',
+      type: ' Headquarters',
       address: 'VOIDRA House, Linking Road, Bandra West, Mumbai 400050',
       phone: '+91 98765 43210',
       email: 'mumbai@voidra.in',
