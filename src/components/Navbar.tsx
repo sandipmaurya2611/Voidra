@@ -1,12 +1,15 @@
 "use client"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const pathname = usePathname()
 
   const toggleAboutDropdown = () => {
     setIsAboutDropdownOpen(!isAboutDropdownOpen)
@@ -58,7 +61,7 @@ export default function Navbar() {
                 isScrolled
                   ? "text-black hover:text-[#b6774d]"
                   : "text-white hover:text-[#b6774d]"
-              }`}
+              } ${pathname === "/" ? "border-b-2 border-current" : ""}`}
             >
               Home
             </Link>
@@ -68,7 +71,7 @@ export default function Navbar() {
                 isScrolled
                   ? "text-black hover:text-[#b6774d]"
                   : "text-white hover:text-[#b6774d]"
-              }`}
+              } ${pathname === "/products" ? "border-b-2 border-current" : ""}`}
             >
               Products
             </Link>
@@ -81,7 +84,7 @@ export default function Navbar() {
                   isScrolled
                     ? "text-black hover:text-[#b6774d]"
                     : "text-white hover:text-[#b6774d]"
-                }`}
+                } ${pathname.startsWith("/about-us") ? "border-b-2 border-current" : ""}`}
               >
                 <span>About Us</span>
                 <svg
@@ -145,7 +148,7 @@ export default function Navbar() {
                 isScrolled
                   ? "text-black hover:text-[#b6774d]"
                   : "text-white hover:text-[#b6774d]"
-              }`}
+              } ${pathname === "/contact" ? "border-b-2 border-current" : ""}`}
             >
               Contact
             </Link>
@@ -188,11 +191,11 @@ export default function Navbar() {
       >
         <div className="rounded-2xl shadow-lg border border-white/30 bg-[#0b0b0b]/80 backdrop-blur px-6 py-4 text-white">
           <div className="flex flex-col space-y-3">
-            <Link href="/" onClick={() => setIsMobileOpen(false)} className="py-2 px-1 rounded hover:text-[#b6774d] transition-colors">Home</Link>
-            <Link href="/products" onClick={() => setIsMobileOpen(false)} className="py-2 px-1 rounded hover:text-[#b6774d] transition-colors">Products</Link>
+            <Link href="/" onClick={() => setIsMobileOpen(false)} className={`py-2 px-1 rounded hover:text-[#b6774d] transition-colors ${pathname === "/" ? "border-b-2 border-white" : ""}`}>Home</Link>
+            <Link href="/products" onClick={() => setIsMobileOpen(false)} className={`py-2 px-1 rounded hover:text-[#b6774d] transition-colors ${pathname === "/products" ? "border-b-2 border-white" : ""}`}>Products</Link>
             {/* About Us Mobile Disclosure (unchanged) */}
             {/* ... */}
-            <Link href="/contact" onClick={() => setIsMobileOpen(false)} className="py-2 px-1 rounded hover:text-[#b6774d] transition-colors">Contact</Link>
+            <Link href="/contact" onClick={() => setIsMobileOpen(false)} className={`py-2 px-1 rounded hover:text-[#b6774d] transition-colors ${pathname === "/contact" ? "border-b-2 border-white" : ""}`}>Contact</Link>
           </div>
         </div>
       </div>
