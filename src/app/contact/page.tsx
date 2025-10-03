@@ -111,6 +111,31 @@ export default function ContactPage() {
 
   const [selectedOffice, setSelectedOffice] = useState(offices[0])
 
+  const faqData = [
+    {
+      question: "What are your shipping policies?",
+      answer: "We offer free shipping on orders above ₹5,000 within India. International shipping is available to select countries. Orders are processed within 24-48 hours."
+    },
+    {
+      question: "Do you offer returns and exchanges?",
+      answer: "Yes, we accept returns within 30 days of purchase in original condition with tags. Exchanges are available for size and color variations subject to availability."
+    },
+    {
+      question: "How can I track my order?",
+      answer: "Once your order ships, you'll receive a tracking number via email and SMS. You can also track your order through your account on our website."
+    },
+    {
+      question: "Do you offer customization services?",
+      answer: "We offer select customization services for certain products. Please contact our customer service team to discuss your requirements and availability."
+    },
+    {
+      question: "What payment methods do you accept?",
+      answer: "We accept all major credit/debit cards, UPI, net banking, and digital wallets. All transactions are secured with industry-standard encryption."
+    }
+  ]
+
+  const [openFaqs, setOpenFaqs] = useState<boolean[]>(new Array(faqData.length).fill(false))
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -135,6 +160,10 @@ export default function ContactPage() {
         inquiryType: 'general'
       })
     }, 2000)
+  }
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqs(prev => prev.map((open, i) => (i === index ? !open : open)))
   }
   
   return (
@@ -435,32 +464,28 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="space-y-6">
-            {[
-              {
-                question: "What are your shipping policies?",
-                answer: "We offer free shipping on orders above ₹5,000 within India. International shipping is available to select countries. Orders are processed within 24-48 hours."
-              },
-              {
-                question: "Do you offer returns and exchanges?",
-                answer: "Yes, we accept returns within 30 days of purchase in original condition with tags. Exchanges are available for size and color variations subject to availability."
-              },
-              {
-                question: "How can I track my order?",
-                answer: "Once your order ships, you'll receive a tracking number via email and SMS. You can also track your order through your account on our website."
-              },
-              {
-                question: "Do you offer customization services?",
-                answer: "We offer select customization services for certain products. Please contact our customer service team to discuss your requirements and availability."
-              },
-              {
-                question: "What payment methods do you accept?",
-                answer: "We accept all major credit/debit cards, UPI, net banking, and digital wallets. All transactions are secured with industry-standard encryption."
-              }
-            ].map((faq, index) => (
+          <div className="space-y-4">
+            {faqData.map((faq, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="font-semibold text-lg mb-3 text-gray-900">{faq.question}</h3>
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full text-left flex justify-between items-center font-semibold text-lg text-gray-900 hover:text-gray-700 transition-colors"
+                >
+                  {faq.question}
+                  <svg
+                    className={`w-5 h-5 transition-transform duration-200 ${openFaqs[index] ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFaqs[index] && (
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
