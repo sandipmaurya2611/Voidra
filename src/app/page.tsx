@@ -127,9 +127,13 @@ export default function VoidraHomepage() {
                   {slide.subtitle}
                 </p>
                 <Link href="/products">
-                  <button className="mt-4 px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase animate-fade-in-up animation-delay-400">
-                    Explore Collection
-                  </button>
+                <button className="group relative mt-4 px-8 py-3 border-2 border-white text-white font-medium tracking-wide uppercase animate-fade-in-up animation-delay-400 overflow-hidden">
+  <span className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+  <span className="relative z-10 group-hover:text-black transition-colors duration-500">
+    Explore Collection
+  </span>
+</button>
+
                 </Link>
               </div>
             </div>
@@ -279,8 +283,11 @@ export default function VoidraHomepage() {
 
           <div className="text-center mt-12">
             <Link href="/products">
-              <button className="px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium tracking-wide uppercase">
-                View All Products
+              <button className="group relative px-8 py-3 border-2 border-black text-black font-medium tracking-wide uppercase overflow-hidden">
+                <span className="absolute inset-0 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                  View All Products
+                </span>
               </button>
             </Link>
           </div>
@@ -300,8 +307,11 @@ export default function VoidraHomepage() {
             Discover stories of empowerment, style philosophy, and the art of intentional living.
           </p>
           <Link href="/about-us">
-            <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase">
-              Read More
+            <button className="group relative px-8 py-3 border-2 border-white text-white font-medium tracking-wide uppercase overflow-hidden">
+              <span className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+              <span className="relative z-10 group-hover:text-black transition-colors duration-500">
+                Read More
+              </span>
             </button>
           </Link>
         </div>
@@ -322,8 +332,11 @@ export default function VoidraHomepage() {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 border border-gray-300 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-colors rounded-sm"
             />
-            <button className="px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300 font-medium uppercase tracking-wide rounded-sm">
-              Subscribe
+            <button className="group relative px-6 py-3 bg-black text-white font-medium uppercase tracking-wide rounded-sm overflow-hidden">
+              <span className="absolute inset-0 bg-gray-800 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+              <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                Subscribe
+              </span>
             </button>
           </div>
         </div>

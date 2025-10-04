@@ -342,13 +342,19 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/products">
-              <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-medium tracking-wide uppercase">
-                Shop Collection
+              <button className="group relative px-8 py-3 border-2 border-white text-white font-medium tracking-wide uppercase overflow-hidden">
+                <span className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                <span className="relative z-10 group-hover:text-black transition-colors duration-500">
+                  Shop Collection
+                </span>
               </button>
             </Link>
             <Link href="/about-us">
-              <button className="px-8 py-3 bg-transparent text-white hover:text-gray-300 transition-colors duration-300 font-medium tracking-wide uppercase">
-                Read Our Stories
+              <button className="group relative px-8 py-3 bg-transparent text-white font-medium tracking-wide uppercase overflow-hidden">
+                <span className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+                <span className="relative z-10 group-hover:text-black transition-colors duration-500">
+                  Read Our Stories
+                </span>
               </button>
             </Link>
           </div>
