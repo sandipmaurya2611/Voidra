@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 
 export default function Navbar() {
@@ -10,6 +10,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const pathname = usePathname()
+  const aboutRef = useRef<HTMLDivElement | null>(null)
 
   const toggleAboutDropdown = () => {
     setIsAboutDropdownOpen(!isAboutDropdownOpen)
@@ -26,6 +27,24 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Close About dropdown on outside click/touch
+  useEffect(() => {
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (!isAboutDropdownOpen) return
+      const target = e.target as Node
+      if (aboutRef.current && !aboutRef.current.contains(target)) {
+        setIsAboutDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handlePointerDown)
+    document.addEventListener("touchstart", handlePointerDown)
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown)
+      document.removeEventListener("touchstart", handlePointerDown)
+    }
+  }, [isAboutDropdownOpen])
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
@@ -77,7 +96,7 @@ export default function Navbar() {
             </Link>
 
             {/* About Us Dropdown with Arrow */}
-            <div className="relative group">
+            <div ref={aboutRef} className="relative group">
               <button
                 onClick={toggleAboutDropdown}
                 className={`transition-colors duration-300 font-medium flex items-center space-x-1 ${

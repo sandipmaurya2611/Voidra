@@ -219,7 +219,7 @@ export default function VoidraHomepage() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <div className="p-6 flex flex-col items-center justify-between gap-3 h-[314px] text-center">
+              <div className="p-6 flex flex-col items-center justify-between gap-3 text-center">
                 <Link
                   href={post.href}
                   className="text-xl sm:text-2xl font-light uppercase tracking-wide hover:underline"
