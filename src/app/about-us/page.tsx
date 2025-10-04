@@ -153,13 +153,16 @@ export default function AboutPage() {
               <h3 className="text-2xl font-light mb-12 text-center tracking-wide text-gray-900">
                 OUR JOURNEY
               </h3>
-              <div className="space-y-8">
+              {/* Timeline track: vertical brown dotted line connecting dots */}
+              <div className="space-y-8 relative">
+                <div className="absolute left-28 top-5 bottom-2 border-l-2 border-dotted border-[#5a2917]" aria-hidden="true"></div>
                 {milestones.map((milestone, index) => (
                   <div key={index} className="flex items-start space-x-6 group">
                     <div className="flex-shrink-0 w-20 text-right">
                       <span className="text-2xl font-light text-gray-900">{milestone.year}</span>
                     </div>
-                    <div className="flex-shrink-0 w-4 h-4 bg-amber-200 rounded-full mt-2 group-hover:scale-125 transition-transform duration-300"></div>
+                    {/* Yellow milestone dot */}
+                    <div className="relative z-10 flex-shrink-0 w-4 h-4 bg-amber-300 rounded-full mt-2 ring-2 ring-white"></div>
                     <div className="flex-1">
                       <h4 className="text-xl font-semibold mb-2 text-gray-900">{milestone.title}</h4>
                       <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
